@@ -11,3 +11,7 @@ Maker Media GmbH
 **Hardware steuern mit TouchOSC, Make 3/2020 S. 94**
 
 Mit der preiswerten App TouchOSC und dem zugehörigen Editor lassen sich im Handumdrehen komfortable Bedienoberflächen für Smartphones und Tablets erstellen. Als Brücke zur realen Welt dient uns ein ESP8266, der die Touch-Befehle nicht nur empfängt, sondern auch Messwerte oder Schalterstellungen an das Mobilgerät zurückübermitteln kann. 
+
+**Weitere Hinweise**
+
+Zum Upload auf das Demo-Board "Kniwwelino" ist die *kniwwelino-lib* **nicht** nötig, lediglich die zur Ansteuerung der RGB-LED (NeoPixel) nötige Adafruit NeoPixel v1.1.6 Library (https://github.com/adafruit/Adafruit_NeoPixel).
