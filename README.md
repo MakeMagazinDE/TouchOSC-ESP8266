@@ -18,4 +18,4 @@ Zum Upload auf das Demo-Board "Kniwwelino" ist die *kniwwelino-lib* **nicht** n�
 
 Zum Upload des TouchOSC-Layouts *make_demo.touchosc* benötigen Sie den kostenlosen TouchOSC-Editor von Hexler (https://hexler.net/products/touchosc). Die TouchOSC-App für Mobilgeräte ist im Apple Store und im Google Play Store verfügbar, sie kostet rund 5 Euro.
 
-Unser UDP-Tester kann mit der kostenlosen Delphi-Community-Edition (https://www.embarcadero.com/de/products/delphi/starter) übersetzt werden. Eine ausführbare Datei ist im Ordner *udp_tester* enthalten.
+Unser UDP-Tester kann mit der kostenlosen Delphi-Community-Edition (https://www.embarcadero.com/de/products/delphi/starter) übersetzt werden. Eine ausführbare Datei ist im Ordner *udp_tester* enthalten. Die Windows-Firewall wird evt. Zugriffe vom *udp_tester.exe* blocken. Geben Sie diese frei. Tragen Sie die IPv4-Nummer des Rechners, auf dem *udp_tester.exe* ausgeführt wird, in den OSC-Settings der TouchOSC-App ein, ebenso umgekehrt die IP-Nummer des Mobilgeräts im Feld "IP of Tablet/Phone". Beide Geräte müssen am gleichen Router angemeldet sein.
