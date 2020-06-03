@@ -4,7 +4,7 @@ Maker Media GmbH
 
 ***
 
-#ESP8266-Dashboard
+# ESP8266-Dashboard
 
 ![Picture](https://github.com/MakeMagazinDE/TouchOSC-ESP8266/blob/master/aufm_gh.JPG)
 
