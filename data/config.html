@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang='de'>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'>
+<link rel='stylesheet' href='style.css'>
+<title>TouchOSC Bridge Configuration</title>
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		fetch('config_json').then(function (response) {
+			return response.json();
+		}).then(function (json) {
+			document.getElementById("ssid_ap").value = json.ssid_ap;
+			document.getElementById("passw_ap").value = json.passw_ap;
+			document.getElementById("force_ap").checked = json.ap_mode;
+			document.getElementById("fb_others").checked = json.fb_others;
+			document.getElementById("fb_self").checked = json.fb_self;
+			document.getElementById("udp_delay").value = json.udp_delay;
+			document.getElementById("udp_timeout").value = json.udp_timeout;
+			document.getElementById("ssid_sta").value = json.ssid_sta;
+			document.getElementById("passw_sta").value = json.passw_sta;
+			document.getElementById("ip_info").innerHTML = json.ip_info;
+			document.getElementById("client_count").innerHTML = json.client_count;
+			document.getElementById("wifi_vers").innerHTML = json.wifi_vers;
+			// Drop-Down-Liste erstellen
+			var new_option = new Option("Select...", 0);	// erster Eintrag
+			var ssid_dd = document.getElementById("ssid_list");	// Dropdown-Element SSIDs
+			ssid_dd.options.add(new_option);
+			for (var i = 0; i < json.ssid_list.length; i++) {
+				new_option = new Option(json.ssid_list[i], i + 1);
+				ssid_dd.options.add(new_option);
+			}
+			free = json.freeBytes;
+		});
+	});
+	// Header ändern, wenn Seite komplett geladen
+	document.onreadystatechange = function () {
+		if (document.readyState == 'loaded' || document.readyState == 'complete') {
+			document.getElementById("h1_msg").innerHTML = "TouchOSC Bridge<br>Configuration";
+		}
+	}
+
+	function change_ssid() {
+		// Bei Bedienung des Dropdown-Menus Wert eintragen
+		var ssid_dd = document.getElementById("ssid_list");	// Dropdown-Element SSIDs
+		document.getElementById("ssid_sta").value = ssid_dd.options[ssid_dd.selectedIndex].text;
+		ssid_dd.selectedIndex = 0;
+	}
+
+</script>
+</head>
+
+<body>
+	<table class='header'>
+		<tr>
+			<td width="300px"><img alt="make logo" src="make_logo.png"></td>
+			<td>
+				<h1 id="h1_msg">Retrieving data,<br>just a moment...</h1>
+			</td>
+		</tr>
+	</table>
+	<form action='/get'>
+		<li>Set Options for WiFi access</li>
+		<table class='header'>
+			<tr>
+				<td class="config" width="200px">SSID (TouchOSC Bridge)<br>for access point mode</td>
+				<td class="config" width="230px"><input style='width: 230px' type='text' name='ssid' id="ssid_ap">
+				</td>
+				<td class="config" width="100px"></td>
+			</tr>
+			<tr>
+				<td class="config" width="200px">Password<br>for access point mode</td>
+				<td class="config" width="230px"><input style='width: 230px' type='text' name='pass' id="passw_ap">
+				</td>
+				<td class="config" width="100px"></td>
+			</tr>
+			<tr>
+				<td class="config" width="200px">Force access point mode<br>(ignore your WLAN)</td>
+				<td class="config" width="230px"><label class='switch'><input type='checkbox' name='force_ap' value='1'
+							id="force_ap"><span class='slider_sw'></span></label></td>
+				<td class="config" width="100px"></td>
+			</tr>
+			<tr>
+				<td class="config" width="200px">SSID (your WLAN)<br>for station mode</td>
+				<td class="config" width="230px"><input style='width: 230px' type='text' name='ssid_sta' id="ssid_sta">
+				</td>
+				<td class="config" width="100px"><select style='width: 90px' name="ssid_list" id="ssid_list"
+						onchange="change_ssid()"></select></td>
+			</tr>
+			<tr>
+				<td class="config" width="200px">Password<br>for station mode</td>
+				<td class="config" width="230px"><input style='width: 230px' type='text' name='pass_sta' id="passw_sta">
+				</td>
+				<td class="config" width="100px"></td>
+			</tr>
+			</tr>
+			<tr>
+				<td class="config" width="200px">UDP Delay (0..50ms)</td>
+				<td class="config" width="230px"><input style='width: 100px' type='number' name='udp_delay'
+						id="udp_delay"></td>
+				<td class="config" width="100px"></td>
+			</tr>
+			<tr>
+				<td class="config" width="200px">UDP Client Timeout (s)</td>
+				<td class="config" width="230px"><input style='width: 100px' type='number' name='udp_timeout'
+						id="udp_timeout"></td>
+				<td class="config" width="100px"></td>
+			</tr>
+			<tr>
+				<td class="config" width="200px">Feedback to other<br>OSC clients</td>
+				<td class="config" width="230px"><label class='switch'><input type='checkbox' name='fb_others' value='1'
+							id="fb_others"><span class='slider_sw'></span></label></td>
+				<td class="config" width="100px"></td>
+			</tr>
+			<tr>
+				<td class="config" width="200px">Feedback to sending<br>OSC client (self)</td>
+				<td class="config" width="230px"><label class='switch'><input type='checkbox' name='fb_self' value='1'
+							id="fb_self"><span class='slider_sw'></span></label></td>
+				<td class="config" width="100px"></td>
+			</tr>
+			</tr>
+			<tr>
+				<td class="config" width="200px"><span style='color:red'>Store data to WiFi Module<br><small>WLAN settings valid after reset!</small></span></td>
+				<td class="config" width="230px"><input class='btn_wide' type='submit' value='Submit Changes'></td>
+				<td class="config" width="100px"></td>
+			</tr>
+			</tr>
+		</table>
+	</form>
+	<li>TouchOSC Bridge IP:<b><span id="ip_info"></span></b>&nbsp;&nbsp;(enter in TouchOSC as Host)<br>Connected OSC Devices: <span id="client_count"></span></li>
+	<li class="boldlink"><a href='spiffs.html'>Manage File System</a></li>
+	<li class="boldlink"><a href='help_config.html'>View Help Page</a></li>
+	<li>TouchOSC Bridge <span id="wifi_vers"></span><br>(c) Make Magazin & Carsten Meyer 05/2020</li>
+</body>
+
+</html>

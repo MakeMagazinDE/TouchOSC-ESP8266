@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<link href="style.css" rel="stylesheet">
+<title>TouchOSC Bridge WiFi Configuration Help</title>
+</head>
+
+<body>
+
+	<table>
+		<tr>
+			<td width="300px"><img alt="make logo" src="make_logo.png"></td>
+			<td>
+				<h1>HX3.5 WiFi<br>Configuration</h1>
+			</td>
+		</tr>
+	</table>
+
+	<p><br>HX3.5 Wifi module may be operated in <b>Access Point</b> or
+		<b>Client/Station</b> mode.</p>
+	<p>In <b>Acces Point mode</b>, WiFi module acts as a simple web
+		server, creating it's own WiFi net named &quot;HX3.5 Touch OSC&quot; on <b>IP 192.168.4.1</b> or
+		&quot;make_osc.local&quot;, default password is &quot;password&quot;. Note: Android devices will not
+		accept &quot;hx3.local&quot; as a valid URL, so you have to type the IP address instead.
+	</p>
+	<p>Access Point mode is advisable when your home wireless network is out of
+		reach. TouchOSC must be configured with IP address 192.168.4.1 to access the
+		module. You may change SSID and password on <a href="../">configuration page</a>.</p>
+	<p>In <b>Client/Station mode</b>, TouchOSC Bridge will register
+		itself on your home network router from which it will receive it's IP address,
+		eg. &quot;192.168.178.65&quot;. TouchOSC must be configured with the IP address displayed
+		by your router web page to access the module.</p>
+	<p>To enable Client/Station mode, set <b>Force Access Point mode</b> to <b>off</b>. Click on <b>Select...</b>.
+		The list will show all WiFi nets found on startup. Select your home
+		network from list and enter your router's password. Click <b>Submit</b>. Mode settings are
+		valid after power cycle.</p>
+	<p>TouchOSC Bridge will try to connect your home network preferably. You may
+		force it to Access Point mode by checking the <b>Force Access Point mode</b>
+		box.</p>
+	<p><b>UDP Delay</b> (default: 2ms) will pause TouchOSC transmission for some milliseconds
+		before sending the next packet. If you experience data loss on your tablet or smartphone (i.e.
+		preset changes from HX3.5 are not fully displayed), set this value to a few
+		milliseconds more.</p>
+	<p><b>UDP Client Timeout</b> (default: 300s) will disable control feedback after a specific amount of time, i.e. a 
+		TouchOSC device has	been permanently removed.</p>
+	<p><b>Feedback to sending OSC clients</b> (default: ON) will transmit control changes on user
+		interface to other TouchOSC clients. Up to 4 TouchOSC devices (tablets/smartphones) may be connected to 
+		WiFi module. You may even work with different TouchOSC user interfaces on the
+		same OSC bridge, ie. one tablet for upper manual controls, second tablet for lower.</p>
+	<p><b>Feedback to other OSC client (self)</b> (default: ON) will transmit control changes on user
+		interface back to sending TouchOSC client. This is usefull when an user control is present
+		on more than one page or a knob needs to be "quantized" for detents.</p>
+	<li class="boldlink"><a href='../'>Back to Configuration Page</a></li>
+</html>
