@@ -4,8 +4,7 @@ Maker Media GmbH
 
 ***
 
-Hardware steuern mit TouchOSC
-===============================
+#ESP8266-Dashboard
 
 ![Picture](https://github.com/MakeMagazinDE/TouchOSC-ESP8266/blob/master/aufm_gh.JPG)
 
