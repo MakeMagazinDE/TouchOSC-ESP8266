@@ -17,3 +17,5 @@ Mit der preiswerten App TouchOSC und dem zugehörigen Editor lassen sich im Hand
 Zum Upload auf das Demo-Board "Kniwwelino" ist die *kniwwelino-lib* **nicht** nötig, lediglich die zur Ansteuerung der RGB-LED (NeoPixel) nötige Adafruit NeoPixel v1.1.6 Library (https://github.com/adafruit/Adafruit_NeoPixel). Entfernen Sie für das Kniwwelino-Board die Kommentarzeichen der Zeile *//#define KNIWWELINO*.
 
 Zum Upload des TouchOSC-Layouts *make_demo.touchosc* benötigen Sie den kostenlosen TouchOSC-Editor von Hexler (https://hexler.net/products/touchosc). Die TouchOSC-App für Mobilgeräte ist im Apple Store und im Google Play Store verfügbar, sie kostet rund 5 Euro.
+
+Unser UDP-Tester kann mit der kostenlosen Delphi-Community-Edition (https://www.embarcadero.com/de/products/delphi/starter) übersetzt werden. Eine ausführbare Datei ist im Ordner *udp_tester* enthalten.
